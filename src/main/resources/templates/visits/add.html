@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml" xmlns:fmt="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/visits}" th:method="post" th:object="${visit}">
+
+    <input type="hidden" th:field="*{id}">
+    <label>Patient:</label>
+    <select th:field="*{patient}">
+        <option th:each="patient: ${patients}" th:value="${patient.id}"
+                th:text="${patient.fullNamePatient()}"/>
+    </select>
+    <label>Doctor:</label>
+    <select th:field="*{doctor}">
+        <option th:each="doctor: ${doctors}" th:value="${doctor.id}"
+                th:text="${doctor.fullName()}"/>
+    </select>
+    <label>Date of the visit:</label>
+    <input type="date" th:value="${visit.dateOfTheVisit}"
+           th:field="*{dateOfTheVisit}">
+
+    <input type="submit" value="Save">
+
+</form>
+</body>
+</html>

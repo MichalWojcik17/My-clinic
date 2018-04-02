@@ -17,12 +17,11 @@
     <label>Age:</label>
     <input type="number" th:value="${doctor.age}"
            th:field="*{age}">
-    <label>Medical specialization:</label>
-    <input type="text" th:value="${doctor.medicalSpecialization}"
-    th:field="*{medicalSpecialization}">
-    </input>
+    <label>Specialization:</label>
+    <input type="text" th:value="${doctor.specialization}"
+           th:field="*{specialization}">
     <input type="submit" th:value="Save">
-
 </form>
+
 </body>
 </html>

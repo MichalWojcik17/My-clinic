@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Health insurance</th>
+        <th>Show</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="patient: ${patients}">
+        <td th:text="${patient.name}"/>
+        <td th:text="${patient.surname}"/>
+        <td th:text="${patient.healthInsurance()}"/>
+        <td><a th:href="@{'/patients/'+${patient.id}}"> <img src="info.png"></a></td>
+        <td><a th:href="@{'/patients/'+${patient.id}+'/delete'}">  <img src="trash.png"></a></td>
+        <td><a th:href="@{'/patients/'+${patient.id}+'/edit'}">  <img src="edit.jpg"> </a></td>
+    </tr>
+    </tbody>
+</table>
+<a href="/add/patients">Add new patient</a>
+
+
+
+</body>
+</html>

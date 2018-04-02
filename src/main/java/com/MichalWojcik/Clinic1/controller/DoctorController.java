@@ -1,7 +1,7 @@
 package com.MichalWojcik.Clinic1.controller;
 
 import com.MichalWojcik.Clinic1.model.Doctor;
-import com.MichalWojcik.Clinic1.repository.doctorRepository;
+import com.MichalWojcik.Clinic1.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,35 +10,33 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
-
 @Controller
 public class DoctorController {
 
     @Autowired
-   private doctorRepository doctorRepository;
+    private DoctorRepository doctorRepository;
 
-    @GetMapping("/add/doctor")
-    public String add(ModelMap modelMap){
+    @GetMapping("/add/doctors")
+        public String add (ModelMap modelMap){
         modelMap.addAttribute("doctor",new Doctor());
-        return "doctor/add";
-    }
-    @PostMapping("/doctors")
+        return "doctors/add";
+
+    } @PostMapping("/doctors")
     public String save(@ModelAttribute Doctor doctor){
-        doctorRepository.save(doctor);
+      doctorRepository.save(doctor);
         return "redirect:/doctors";
     }
 
     @GetMapping("/doctors")
-    public String index(ModelMap modelMap, String type,  Long id ) {
-        modelMap.addAttribute("doctors", doctorRepository.findAll());
-        return "doctor/all";
-    }
+    public String index(ModelMap modelMap){
+        modelMap.addAttribute("doctors",doctorRepository.findAll());
+        return "doctors/index";
+        }
 
-    @GetMapping("doctors/{id}/edit")
+        @GetMapping("doctors/{id}/edit")
     public String edit(@PathVariable Long id, ModelMap modelMap){
         modelMap.addAttribute("doctor",doctorRepository.findById(id).get());
-        return "doctor/add";
+        return "doctors/add";
     }
     // redirect czyści parametry
     @GetMapping("doctors/{id}/delete")
@@ -47,8 +45,9 @@ public class DoctorController {
         return "redirect:/doctors";
     }
     @GetMapping("/doctors/{id}")
-    public String details(@PathVariable Long id,String type, ModelMap modelMap) {
-        modelMap.put("doctor",doctorRepository.findById(id).get());
-        return "doctor/details";
-    }}
+    public String details(@PathVariable Long id, ModelMap modelMap) {
+        modelMap.put("doctors", doctorRepository.findById(id).get());
 
+        return "doctors/details";
+    }
+}

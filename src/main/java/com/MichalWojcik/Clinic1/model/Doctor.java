@@ -1,7 +1,5 @@
 package com.MichalWojcik.Clinic1.model;
 
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,32 +8,20 @@ import javax.persistence.Id;
 @Entity
 public class Doctor {
 
+    private String name, surname, specialization;
+    private int age;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
-    private String name, surname,medicalSpecialization;
-    private int age;
-//    private List<Patient> patients = new ArrayList<>();
-//    public Integer getSize(){
-//        return getPatients().size();
-//    }
-//    public List<Patient> getPatients() {
-//        return patients;
-//    }
-//
-//    public Doctor(List<Patient> patients) {
-//        this.patients = patients;
-//    }
+    private Long id;
+
+    public Doctor(String name, String surname, String specialization, int age) {
+        this.name = name;
+        this.surname = surname;
+        this.specialization = specialization;
+        this.age = age;
+    }
 
     public Doctor() {
-    }
-
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
     }
 
     public String getName() {
@@ -54,26 +40,33 @@ public class Doctor {
         this.surname = surname;
     }
 
-    public String getMedicalSpecialization() {
-        return medicalSpecialization;
+    public String getSpecialization() {
+        return specialization;
     }
 
-    public void setMedicalSpecialization(String medicalSpecialization) {
-        this.medicalSpecialization = medicalSpecialization;
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
     }
 
     public int getAge() {
         return age;
     }
+
     public void setAge(int age) {
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        return "Name: "+getName()+" Surname: "+ getSurname()+ " Age: "+getAge()+" Medical specialization: "+getMedicalSpecialization();
+    public Long getId() {
+        return id;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
     public String fullName(){
-        return getName()+" "+getSurname();
+        return getName()+" "+getSurname()+" "+getSpecialization();
     }
+
 }

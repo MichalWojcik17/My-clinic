@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Patient</th>
+        <th>Doctor</th>
+        <th>DateOfTheVisit</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="visit: ${visits}">
+        <td th:text="${visit.patient.fullNamePatient()}"/>
+        <td th:text="${visit.doctor.fullName()}"/>
+        <td th:text="${visit.toString()}"/>
+        <td><a th:href="@{'/visits/'+${visit.id}+'/delete'}">  <img src="trash.png"></a></td>
+        <td><a th:href="@{'/visits/'+${visit.id}+'/edit'}">  <img src="edit.jpg"> </a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
