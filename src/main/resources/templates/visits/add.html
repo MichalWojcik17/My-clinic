@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-</head>
-<body>
-<form th:action="@{/visits}" th:method="post" th:object="${visit}">
+    <link rel="stylesheet" href="style.css">
 
+</head>
+<body bgcolor="#ff8c00">
+<form th:action="@{/visits}" th:method="post" th:object="${visit}">
     <input type="hidden" th:field="*{id}">
     <label>Patient:</label>
     <select th:field="*{patient}">
@@ -25,5 +26,23 @@
     <input type="submit" value="Save">
 
 </form>
+<select id="list">
+
+    <option value=""> </option>
+    <option value="/add/patients">Add patient</option>
+    <option value="/add/doctors">Add doctor</option>
+    <option value="/add/visits">Add visit</option>
+    <option value="/patients">All patients</option>
+    <option value="/doctors">All doctors</option>
+    <option value="/visits">All visits</option>
+
+</select>
+<script>
+    document.getElementById("list").onchange = function() {
+        if (this.selectedIndex!==0) {
+            window.location.href = this.value;
+        }
+    };
+</script>
 </body>
 </html>

@@ -1,4 +1,18 @@
+
+
 a img{
     height: 20px;
     width: auto;
+}
+table, th, td {
+    border: 1px solid black;
+    color: #8b8b8a;
+    background: darkgreen;
+}
+
+#list{
+    width:30%;
+    float:left;
+    margin-right: 95% !important;
+    margin:10px 0px;
 }

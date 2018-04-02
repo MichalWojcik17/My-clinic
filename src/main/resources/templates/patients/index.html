@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
-<body>
+<body bgcolor="#483d8b">
 <table>
     <thead>
     <tr>
@@ -29,9 +29,24 @@
     </tr>
     </tbody>
 </table>
-<a href="/add/patients">Add new patient</a>
+<select id="list">
 
+    <option value=""> </option>
+    <option value="/add/patients">Add patient</option>
+    <option value="/add/doctors">Add doctor</option>
+    <option value="/add/visits">Add visit</option>
+    <option value="/patients">All patients</option>
+    <option value="/doctors">All doctors</option>
+    <option value="/visits">All visits</option>
 
+</select>
+<script>
+    document.getElementById("list").onchange = function() {
+        if (this.selectedIndex!==0) {
+            window.location.href = this.value;
+        }
+    };
+</script>
 
 </body>
 </html>
