@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>List of doctors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+    <th>Number of patients</th>
+        <th>Show</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="doctor: ${doctors}">
+        <td th:text="${doctor.name}"/>
+        <td th:text="${doctor.surname}"/>
+        <td th:text="${doctor.size}"/>
+        <td><a th:href="@{'/doctors/'+${doctor.id}}"> <img src="info.png"></a></td>
+        <td><a th:href="@{'/doctors/'+${doctor.id}+'/delete'}">  <img src="delete.jpg"></a></td>
+        <td><a th:href="@{'/doctors/'+${doctor.id}+'/edit'}">  <img src="edit2.jpg"> </a></td>
+    </tr>
+    </tbody>
+</table>
+<a href="/add/doctor">Add a new doctor</a>
+
+</body>
+</html>

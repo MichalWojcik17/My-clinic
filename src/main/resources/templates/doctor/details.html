@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="doctors: ${doctor}">
+    <label>Name:</label>
+    <td th:text="${doctors.name}"/>
+    <label>Surname:</label>
+    <td th:text="${doctors.surname}"/>
+    <label>Age:</label>
+    <td th:text="${doctors.age}"/>
+    <label>Medical Specialization:</label>
+    <td th:text="${doctors.medicalSpecialization}"/>
+
+</div>
+</body>
+</html>

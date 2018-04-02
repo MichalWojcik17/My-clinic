@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/doctors}" th:method="post" th:object="${doctor}">
+    <!--th:object załatwia to że można pisać z gwiazdką pola z klasy np name surname-->
+    <input type="hidden" th:field="*{id}">
+    <label>Name:</label>
+    <input type="text" th:value="${doctor.name}"
+           th:field="*{name}">
+    <label>Surname:</label>
+    <input type="text" th:value="${doctor.surname}"
+           th:field="*{surname}">
+    <label>Age:</label>
+    <input type="number" th:value="${doctor.age}"
+           th:field="*{age}">
+    <label>Medical specialization:</label>
+    <input type="text" th:value="${doctor.medicalSpecialization}"
+    th:field="*{medicalSpecialization}">
+    </input>
+    <input type="submit" th:value="Save">
+
+</form>
+</body>
+</html>
